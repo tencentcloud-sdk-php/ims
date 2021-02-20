@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace TencentCloud\Ims\V20200713\Models;
+namespace TencentCloud\Ims\V20201229\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
@@ -23,9 +23,9 @@ use TencentCloud\Common\AbstractModel;
  * @method string getText() 获取OCR文本内容
  * @method void setText(string $Text) 设置OCR文本内容
  * @method string getLabel() 获取恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
  * @method void setLabel(string $Label) 设置恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
  * @method string getLibId() 获取仅当Label为Custom自定义关键词时有效，表示自定义库id
  * @method void setLibId(string $LibId) 设置仅当Label为Custom自定义关键词时有效，表示自定义库id
  * @method string getLibName() 获取仅当Label为Custom自定义关键词时有效，表示自定义库名称
@@ -36,6 +36,8 @@ use TencentCloud\Common\AbstractModel;
  * @method void setScore(integer $Score) 设置该标签模型命中的分值
  * @method Location getLocation() 获取OCR位置
  * @method void setLocation(Location $Location) 设置OCR位置
+ * @method integer getRate() 获取OCR文本识别置信度
+ * @method void setRate(integer $Rate) 设置OCR文本识别置信度
  */
 class OcrTextDetail extends AbstractModel
 {
@@ -46,7 +48,7 @@ class OcrTextDetail extends AbstractModel
 
     /**
      * @var string 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
      */
     public $Label;
 
@@ -76,14 +78,20 @@ class OcrTextDetail extends AbstractModel
     public $Location;
 
     /**
+     * @var integer OCR文本识别置信度
+     */
+    public $Rate;
+
+    /**
      * @param string $Text OCR文本内容
      * @param string $Label 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
      * @param string $LibId 仅当Label为Custom自定义关键词时有效，表示自定义库id
      * @param string $LibName 仅当Label为Custom自定义关键词时有效，表示自定义库名称
      * @param array $Keywords 该标签下命中的关键词
      * @param integer $Score 该标签模型命中的分值
      * @param Location $Location OCR位置
+     * @param integer $Rate OCR文本识别置信度
      */
     function __construct()
     {
@@ -125,6 +133,10 @@ class OcrTextDetail extends AbstractModel
         if (array_key_exists("Location",$param) and $param["Location"] !== null) {
             $this->Location = new Location();
             $this->Location->deserialize($param["Location"]);
+        }
+
+        if (array_key_exists("Rate",$param) and $param["Rate"] !== null) {
+            $this->Rate = $param["Rate"];
         }
     }
 }

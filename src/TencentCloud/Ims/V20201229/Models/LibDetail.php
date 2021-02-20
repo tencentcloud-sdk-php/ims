@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace TencentCloud\Ims\V20200713\Models;
+namespace TencentCloud\Ims\V20201229\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
@@ -31,9 +31,9 @@ use TencentCloud\Common\AbstractModel;
  * @method string getImageId() 获取图片ID
  * @method void setImageId(string $ImageId) 设置图片ID
  * @method string getLabel() 获取恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及其他令人反感、不安全或不适宜的内容类型。
+以及其他其他令人反感、不安全或不适宜的内容类型。
  * @method void setLabel(string $Label) 设置恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及其他令人反感、不安全或不适宜的内容类型。
+以及其他其他令人反感、不安全或不适宜的内容类型。
  * @method string getTag() 获取自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
  * @method void setTag(string $Tag) 设置自定义标签
@@ -66,7 +66,7 @@ class LibDetail extends AbstractModel
 
     /**
      * @var string 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及其他令人反感、不安全或不适宜的内容类型。
+以及其他其他令人反感、不安全或不适宜的内容类型。
      */
     public $Label;
 
@@ -88,7 +88,7 @@ class LibDetail extends AbstractModel
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $ImageId 图片ID
      * @param string $Label 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义词库。
-以及其他令人反感、不安全或不适宜的内容类型。
+以及其他其他令人反感、不安全或不适宜的内容类型。
      * @param string $Tag 自定义标签
 注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Score 命中的模型分值

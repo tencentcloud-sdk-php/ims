@@ -14,24 +14,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace TencentCloud\Ims\V20200713\Models;
+namespace TencentCloud\Ims\V20201229\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
  * ImageModeration返回参数结构体
  *
- * @method integer getHitFlag() 获取数据是否属于恶意类型。
-0：正常，1：可疑；
- * @method void setHitFlag(integer $HitFlag) 设置数据是否属于恶意类型。
-0：正常，1：可疑；
  * @method string getSuggestion() 获取建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
  * @method void setSuggestion(string $Suggestion) 设置建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
  * @method string getLabel() 获取恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
  * @method void setLabel(string $Label) 设置恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
  * @method string getSubLabel() 获取子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
  * @method void setSubLabel(string $SubLabel) 设置子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
  * @method integer getScore() 获取机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
@@ -66,17 +62,13 @@ use TencentCloud\Common\AbstractModel;
  * @method void setExtra(string $Extra) 设置扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
+ * @method string getFileMD5() 获取图片MD5值
+ * @method void setFileMD5(string $FileMD5) 设置图片MD5值
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
 class ImageModerationResponse extends AbstractModel
 {
-    /**
-     * @var integer 数据是否属于恶意类型。
-0：正常，1：可疑；
-     */
-    public $HitFlag;
-
     /**
      * @var string 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
@@ -85,7 +77,7 @@ class ImageModerationResponse extends AbstractModel
 
     /**
      * @var string 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
      */
     public $Label;
 
@@ -143,17 +135,20 @@ class ImageModerationResponse extends AbstractModel
     public $Extra;
 
     /**
+     * @var string 图片MD5值
+     */
+    public $FileMD5;
+
+    /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     public $RequestId;
 
     /**
-     * @param integer $HitFlag 数据是否属于恶意类型。
-0：正常，1：可疑；
      * @param string $Suggestion 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
      * @param string $Label 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
      * @param string $SubLabel 子标签名称，如色情--性行为；当未命中子标签时，返回空字符串；
      * @param integer $Score 机器判断当前分类的置信度，取值范围：0.00~100.00。分数越高，表示越有可能属于当前分类。
 （如：色情 99.99，则该样本属于色情的置信度非常高。）
@@ -171,6 +166,7 @@ class ImageModerationResponse extends AbstractModel
      * @param string $Extra 扩展字段，用于特定信息返回，不同客户/Biztype下返回信息不同。
 注意：此字段可能返回 null，表示取不到有效值。
 注意：此字段可能返回 null，表示取不到有效值。
+     * @param string $FileMD5 图片MD5值
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -186,10 +182,6 @@ class ImageModerationResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("HitFlag",$param) and $param["HitFlag"] !== null) {
-            $this->HitFlag = $param["HitFlag"];
-        }
-
         if (array_key_exists("Suggestion",$param) and $param["Suggestion"] !== null) {
             $this->Suggestion = $param["Suggestion"];
         }
@@ -252,6 +244,10 @@ class ImageModerationResponse extends AbstractModel
 
         if (array_key_exists("Extra",$param) and $param["Extra"] !== null) {
             $this->Extra = $param["Extra"];
+        }
+
+        if (array_key_exists("FileMD5",$param) and $param["FileMD5"] !== null) {
+            $this->FileMD5 = $param["FileMD5"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

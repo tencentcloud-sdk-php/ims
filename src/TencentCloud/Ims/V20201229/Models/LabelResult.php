@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-namespace TencentCloud\Ims\V20200713\Models;
+namespace TencentCloud\Ims\V20201229\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * 实体检测结果详情：实体、广告台标、二维码
+ * 分类模型命中结果
  *
  * @method string getScene() 获取场景识别结果
  * @method void setScene(string $Scene) 设置场景识别结果
@@ -27,25 +27,19 @@ use TencentCloud\Common\AbstractModel;
  * @method void setSuggestion(string $Suggestion) 设置建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
  * @method string getLabel() 获取恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
  * @method void setLabel(string $Label) 设置恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
  * @method string getSubLabel() 获取子标签检测结果
-注意：此字段可能返回 null，表示取不到有效值。
  * @method void setSubLabel(string $SubLabel) 设置子标签检测结果
-注意：此字段可能返回 null，表示取不到有效值。
  * @method integer getScore() 获取该标签模型命中的分值
  * @method void setScore(integer $Score) 设置该标签模型命中的分值
- * @method array getNames() 获取实体名称
+ * @method array getDetails() 获取分类模型命中子标签结果
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setNames(array $Names) 设置实体名称
-注意：此字段可能返回 null，表示取不到有效值。
- * @method array getDetails() 获取实体检测结果明细
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setDetails(array $Details) 设置实体检测结果明细
+ * @method void setDetails(array $Details) 设置分类模型命中子标签结果
 注意：此字段可能返回 null，表示取不到有效值。
  */
-class ObjectResult extends AbstractModel
+class LabelResult extends AbstractModel
 {
     /**
      * @var string 场景识别结果
@@ -60,13 +54,12 @@ class ObjectResult extends AbstractModel
 
     /**
      * @var string 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
      */
     public $Label;
 
     /**
      * @var string 子标签检测结果
-注意：此字段可能返回 null，表示取不到有效值。
      */
     public $SubLabel;
 
@@ -76,13 +69,7 @@ class ObjectResult extends AbstractModel
     public $Score;
 
     /**
-     * @var array 实体名称
-注意：此字段可能返回 null，表示取不到有效值。
-     */
-    public $Names;
-
-    /**
-     * @var array 实体检测结果明细
+     * @var array 分类模型命中子标签结果
 注意：此字段可能返回 null，表示取不到有效值。
      */
     public $Details;
@@ -92,13 +79,10 @@ class ObjectResult extends AbstractModel
      * @param string $Suggestion 建议您拿到判断结果后的执行操作。
 建议值，Block：建议屏蔽，Review：建议复审，Pass：建议通过
      * @param string $Label 恶意标签，Normal：正常，Porn：色情，Abuse：谩骂，Ad：广告，Custom：自定义图片。
-以及令人反感、不安全或不适宜的内容类型。
+以及其他令人反感、不安全或不适宜的内容类型。
      * @param string $SubLabel 子标签检测结果
-注意：此字段可能返回 null，表示取不到有效值。
      * @param integer $Score 该标签模型命中的分值
-     * @param array $Names 实体名称
-注意：此字段可能返回 null，表示取不到有效值。
-     * @param array $Details 实体检测结果明细
+     * @param array $Details 分类模型命中子标签结果
 注意：此字段可能返回 null，表示取不到有效值。
      */
     function __construct()
@@ -134,14 +118,10 @@ class ObjectResult extends AbstractModel
             $this->Score = $param["Score"];
         }
 
-        if (array_key_exists("Names",$param) and $param["Names"] !== null) {
-            $this->Names = $param["Names"];
-        }
-
         if (array_key_exists("Details",$param) and $param["Details"] !== null) {
             $this->Details = [];
             foreach ($param["Details"] as $key => $value){
-                $obj = new ObjectDetail();
+                $obj = new LabelDetailItem();
                 $obj->deserialize($value);
                 array_push($this->Details, $obj);
             }
